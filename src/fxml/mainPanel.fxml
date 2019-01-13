@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDrawer?>
+<?import com.jfoenix.controls.JFXListView?>
+<?import com.jfoenix.controls.JFXMasonryPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTreeView?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.MainPanelControler">
+   <children>
+      <JFXDrawer fx:id="drawer" alignment="TOP_LEFT" defaultDrawerSize="265.0" focusTraversable="true" layoutY="64.0" prefHeight="736.0" prefWidth="265.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="63.0">
+         <effect>
+            <DropShadow color="#00000040" height="0.0" radius="4.75" />
+         </effect>
+      </JFXDrawer>
+      <StackPane fx:id="stackPane" prefHeight="800.0" prefWidth="1280.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <BorderPane fx:id="borderPane" layoutX="9.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #fafafa;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <top>
+            <HBox alignment="CENTER_LEFT" prefHeight="56.0" prefWidth="1280.0" spacing="10.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <Region prefHeight="36.0" prefWidth="25.0" />
+                  <FontAwesomeIconView fx:id="hamburger" glyphName="NAVICON" onMouseClicked="#openDrawer" size="42" />
+                  <Region prefHeight="36.0" prefWidth="30.0" />
+                  <ImageView fitHeight="43.0" fitWidth="132.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@../res/img/logoCellarium.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets right="70.0" />
+                     </HBox.margin>
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </ImageView>
+                  <HBox alignment="CENTER" style="-fx-background-color: #f5f5f5;">
+                     <children>
+                        <Region minWidth="15.0" />
+                        <FontAwesomeIconView fill="#515151" glyphName="SEARCH" size="20" />
+                        <Region prefHeight="36.0" prefWidth="20.0" />
+                        <JFXTextField focusColor="#ff572400" prefHeight="25.0" prefWidth="360.0" promptText="Rechercher" unFocusColor="#4d4d4d00" />
+                     </children>
+                  </HBox>
+                  <Region HBox.hgrow="ALWAYS" />
+                  <VBox alignment="CENTER">
+                     <children>
+                        <FontAwesomeIconView fill="#ff5722" glyphName="BARCODE" size="16" />
+                        <JFXButton onAction="#supprBouteilleScan" prefHeight="25.0" prefWidth="195.0" text="Trouver bouteille par codebarre" textFill="#ff5722" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER" onMouseReleased="#geolocalisation">
+                     <children>
+                        <FontAwesomeIconView fill="#ff5722" glyphName="SHOPPING_BASKET" onMouseClicked="#geolocalisation" size="16" />
+                        <JFXButton onAction="#geolocalisation" onMouseReleased="#geolocalisation" ripplerFill="#ff572200" text="Rechercher des vendeurs" textFill="#ff5722" />
+                     </children>
+                  </VBox>
+                  <VBox alignment="CENTER">
+                     <children>
+                        <FontAwesomeIconView fill="#ff5722" glyphName="REFRESH" size="16" />
+                        <JFXButton onAction="#testSync" prefHeight="25.0" prefWidth="97.0" ripplerFill="#ff572200" text="Synchroniser" textFill="#ff5722" />
+                     </children>
+                  </VBox>
+                  <Region minWidth="20.0" />
+               </children>
+               <BorderPane.margin>
+                  <Insets />
+               </BorderPane.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+               <effect>
+                  <DropShadow color="#00000040" />
+               </effect>
+            </HBox>
+         </top>
+         <right>
+            <VBox alignment="TOP_CENTER" prefHeight="668.0" prefWidth="250.0" style="-fx-background-color: #ffffff;" BorderPane.alignment="CENTER">
+               <children>
+                  <Label fx:id="ficheBouteilles" text="Mes bouteilles">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets bottom="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXListView fx:id="listView" onMouseClicked="#afficherFiche" prefHeight="131.0" prefWidth="218.0" style="-fx-background-color: #eeeeee;" stylesheets="@../css/JFXListView.css">
+                     <padding>
+                        <Insets bottom="10.0" />
+                     </padding>
+                  </JFXListView>
+                  <VBox prefHeight="200.0" prefWidth="100.0" spacing="2.0">
+                     <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <ImageView fitWidth="218.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../res/img/imgVin1.png" />
+                           </image>
+                           <viewport>
+                              <Rectangle2D />
+                           </viewport>
+                        </ImageView>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="domaine" style="-fx-font-weight: bold;" text="Domaine" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblDomaine" text="domaine" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="region" style="-fx-font-weight: bold;" text="Region" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblRegion" text="region" textFill="#999999" />
+                        <Label fx:id="appellationtype" style="-fx-font-weight: bold;" text="Appellation de type" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblAppellationType" text="type" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="appellation" style="-fx-font-weight: bold;" text="Appellation" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblAppellation" text="appellation" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="couleur" style="-fx-font-weight: bold;" text="Couleur" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblCouleur" text="couleur" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="cepages" style="-fx-font-weight: bold;" text="Cépages" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblCepages" text="cepages" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="degres" style="-fx-font-weight: bold;" text="Degrés d'alcool" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblDegres" text="degres" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="volume" style="-fx-font-weight: bold;" text="Volume bouteille" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="lblVolume" text="volume" textFill="#999999" />
+                        <Region prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+                        <Label fx:id="millesime" style="-fx-font-weight: bold;" text="Millésime" textFill="#868686">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lblMillesime" text="millesime" textFill="#999999" />
+                     </children>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <Region VBox.vgrow="ALWAYS" />
+               </children>
+               <padding>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </padding>
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <effect>
+                  <DropShadow color="#00000040" height="0.0" radius="4.75" />
+               </effect>
+            </VBox>
+         </right>
+         <center>
+            <VBox BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+               </BorderPane.margin>
+               <children>
+                  <VBox style="-fx-background-color: #5a5a5a;">
+                     <children>
+                        <HBox>
+                           <children>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Label text="Informations de la cave" textFill="WHITE">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                              <Region HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #5a5a5a;">
+                           <children>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Nom de la cave" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="caveName" text="Ma cave" textFill="WHITE" />
+                                 </children>
+                                 <padding>
+                                    <Insets top="35.0" />
+                                 </padding>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox alignment="CENTER">
+                                 <padding>
+                                    <Insets top="35.0" />
+                                 </padding>
+                              </VBox>
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Label text="Nombre de bouteilles" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nbBottleGlobal" text="0" textFill="WHITE" />
+                                 </children>
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                                 <padding>
+                                    <Insets top="35.0" />
+                                 </padding>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Circle fill="#fdeadb" radius="16.0" stroke="#a15a5a00" strokeType="INSIDE" />
+                                    <Label text="Vins blancs" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nbBlanc" text="0" textFill="WHITE" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Circle fill="#c00000" radius="16.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <Label text="Vins rouges" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nbRouge" text="0" textFill="WHITE" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <VBox alignment="CENTER">
+                                 <children>
+                                    <Circle fill="#ff9b9b" radius="16.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                                    <Label text="Vins rosés" textFill="WHITE">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="nbRose" text="0" textFill="WHITE" />
+                                 </children>
+                              </VBox>
+                              <Region HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                  </VBox>
+                  <AnchorPane prefWidth="942.0" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </VBox.margin>
+                     <children>
+                        <ScrollPane fx:id="scrollPane" fitToWidth="true" hbarPolicy="NEVER" layoutY="6.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="490.0" prefWidth="942.0" vbarPolicy="ALWAYS" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <content>
+                              <JFXMasonryPane fx:id="mansoryPane" cellHeight="180.0" cellWidth="322.0" />
+                           </content>
+                        </ScrollPane>
+                        <JFXTreeView fx:id="treeView" prefHeight="490.0" prefWidth="942.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
+         </center>
+         <bottom>
+            <AnchorPane prefHeight="0.0" prefWidth="1280.0" BorderPane.alignment="CENTER" />
+         </bottom>
+      </BorderPane>
+   </children>
+</AnchorPane>

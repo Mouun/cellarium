@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDialog?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="606.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.AddWineControler">
+   <children>
+      <StackPane fx:id="stackPaneAddBottle" prefHeight="740.0" prefWidth="557.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <VBox alignment="TOP_CENTER" prefHeight="740.0" prefWidth="557.0" spacing="20.0" style="-fx-background-color: #ffffff;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label text="Ajouter un vin à la base de données">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+            </Label>
+            <FontAwesomeIconView glyphName="PLUS" size="128" />
+            <JFXTextField fx:id="fieldDomaine" focusColor="#14c7a300" promptText="Domaine" style="-fx-background-color: #f5f5f5;" unFocusColor="#ffffff00" />
+            <JFXComboBox fx:id="fieldRegion" focusColor="#ff5722" onAction="#displayAppellation" prefHeight="25.0" prefWidth="558.0" promptText="Région" unFocusColor="BLACK" />
+            <JFXComboBox fx:id="fieldApp" disable="true" focusColor="#ff5722" prefHeight="25.0" prefWidth="542.0" promptText="Appellation" unFocusColor="BLACK" />
+            <JFXComboBox fx:id="fieldCouleur" focusColor="#ff5722" prefHeight="25.0" prefWidth="556.0" promptText="Couleur" unFocusColor="BLACK" />
+            <JFXTextField fx:id="fieldCepages" focusColor="#14c7a300" promptText="Cépages" style="-fx-background-color: #f5f5f5;" unFocusColor="#ffffff00" />
+            <JFXTextField fx:id="fieldDegre" focusColor="#14c7a300" promptText="Degré d'alcool" style="-fx-background-color: #f5f5f5;" unFocusColor="#ffffff00" />
+            <Label fx:id="lblStatus" prefHeight="17.0" prefWidth="302.0" textAlignment="CENTER" visible="false" wrapText="true" />
+            <HBox>
+               <children>
+                  <JFXButton fx:id="buttonValidate" onAction="#addWine" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #ff5722;" text="Valider" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Regular" size="12.0" />
+                     </font>
+                  </JFXButton>
+                  <Region prefWidth="42.0" HBox.hgrow="ALWAYS" />
+                  <JFXButton fx:id="buttonReset" onAction="#resetFields" prefHeight="40.0" prefWidth="140.0" style="-fx-background-color: #ff5722;" text="Réinitialiser" textFill="WHITE">
+                     <font>
+                        <Font name="Open Sans Regular" size="12.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </HBox>
+         </children>
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+      </VBox>
+      <JFXDialog />
+   </children>
+</AnchorPane>

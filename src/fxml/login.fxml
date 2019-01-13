@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="TOP_CENTER" spacing="20.0" style="-fx-background-color: #ffffff;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LoginControler">
+   <children>
+        <Label contentDisplay="CENTER" text="Connexion" textAlignment="CENTER">
+            <font>
+                <Font name="Open Sans Regular" size="18.0" />
+            </font>
+         <cursor>
+            <Cursor fx:constant="OPEN_HAND" />
+         </cursor>
+        </Label>
+      <FontAwesomeIconView glyphName="USER" size="128" stroke="TRANSPARENT" />
+        <JFXTextField fx:id="textUsr" focusColor="#14c7a300" prefHeight="25.0" prefWidth="210.0" promptText="Adresse e-mail" style="-fx-background-color: #EEEEEE;" unFocusColor="#ffffff00" />
+        <JFXPasswordField fx:id="textPwd" focusColor="#14c7a300" prefHeight="25.0" prefWidth="210.0" promptText="Mot de passe" style="-fx-background-color: #EEEEEE;" unFocusColor="#ffffff00">
+            <font>
+                <Font name="Open Sans Regular" size="12.0" />
+            </font>
+        </JFXPasswordField>
+        <Label fx:id="lblStatus" prefHeight="20.0" prefWidth="327.0" textAlignment="CENTER" visible="false" wrapText="true">
+            <font>
+                <Font name="Open Sans Regular" size="12.0" />
+            </font>
+        </Label>
+        <JFXButton buttonType="RAISED" onAction="#login" prefHeight="40.0" prefWidth="325.0" style="-fx-background-color: #ff5722;" text="Valider" textFill="WHITE">
+            <font>
+                <Font name="Open Sans Regular" size="12.0" />
+            </font>
+        </JFXButton>
+      <HBox alignment="CENTER">
+         <children>
+            <Label text="Vous n'avez pas de compte ?" />
+            <JFXButton onAction="#addMember" ripplerFill="#ffffff00" text="Inscription" textFill="#ff5722">
+               <font>
+                  <Font name="Open Sans Regular" size="12.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+   </children>
+   <padding>
+      <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+   </padding>
+</VBox>

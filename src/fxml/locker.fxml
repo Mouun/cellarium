@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+
+<AnchorPane prefHeight="180.0" prefWidth="322.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlers.LockerControler">
+   <children>
+      <VBox prefHeight="180.0" prefWidth="300.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox>
+               <children>
+                  <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #5a5a5a;">
+                     <children>
+                        <JFXTextField fx:id="lockerName" focusColor="#405aa800" prefHeight="25.0" prefWidth="59.0" promptText="Nom" style="-fx-background-color: #fff;" unFocusColor="#4d4d4d00" />
+                        <Circle fill="#fdeadb" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Label fx:id="nbWhite" text="0" textFill="WHITE" />
+                        <Circle fill="#c00000" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Label fx:id="nbRed" text="0" textFill="WHITE" />
+                        <Circle fill="#ff9b9b" radius="15.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+                        <Label fx:id="nbRose" text="0" textFill="WHITE" />
+                        <FontAwesomeIconView fx:id="imgClose" fill="WHITE" glyphName="TIMES" onMouseReleased="#closeLocker" size="16" />
+                     </children>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="10.0" left="5.0" right="5.0" top="10.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </VBox>
+            <AnchorPane VBox.vgrow="ALWAYS">
+               <children>
+                  <HBox fx:id="hboxLocker" prefHeight="130.0" prefWidth="322.0" spacing="10.0" style="-fx-background-color: #d5d5d5;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+   <effect>
+      <DropShadow color="#00000080" />
+   </effect>
+</AnchorPane>
